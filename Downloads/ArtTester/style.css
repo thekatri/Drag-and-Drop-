@@ -1,0 +1,334 @@
+body {
+  margin: 30px;
+  font-family: "Georgia", serif;
+  color: #333;
+}
+ 
+/* Give headings their own font */
+ 
+h1, h2, h3, h4 {
+  font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
+}
+ 
+/* Main content area */
+ 
+#content {
+  margin: 80px 80px;
+
+  position: absolute;
+
+}
+ 
+/* Header/footer boxes */
+ 
+.wideBox {
+  clear: both;
+  text-align: center;
+  margin: 70px;
+  padding: 10px;
+  background: #ebedf2;
+  border: 1px solid #333;
+}
+ 
+.wideBox h1 {
+
+}
+ 
+/* Slots for final card positions */
+ 
+	#instSlots {
+		background: green;
+		position:relative;
+		height: 600px;
+		width: 1000px;
+		float: left;
+		margin: 0 auto; 
+		left: 100px;
+
+
+  
+	}
+ 
+/* The initial pile of unsorted cards */
+ 
+	#instPile {
+		
+		background: navy;
+		height: auto;
+		width: auto;
+
+		float: right;
+		margin: 0 auto;
+	
+ 
+	}
+
+/* Individual cards and slots */
+ 
+	#instSlots div{
+		position: relative;
+
+
+
+	}
+
+	#instPile div {
+	position: relative;
+	width: 70px;
+	height: 70px;
+	margin: 10px 0 0 10px;
+	display: inline-block;
+}
+ 
+/*#instSlots div:first-child, #instPile div:first-child {
+  margin-left: 0;
+} */
+ 
+#instSlots div.hovered {
+
+	background: red;
+	z-index: 100;
+	transform: scale(1.5);
+}
+ 
+#instSlots div {
+  border-style: none; 
+  text-align: center;
+  margin: 100px, 0, 0, 100px;
+  height: 250px;
+  width: 250px;
+  position: absolute;
+}
+ 
+#instPile div {
+  background: none;
+  color: #fff;
+  text-align: center;
+}
+ 
+#instPile div.ui-draggable-dragging			
+{
+
+}
+
+img {
+    position: absolute;
+    top: 0; bottom:0; left: -100px; right:50px;
+    margin: auto;
+}
+ 
+/* Individually cards */
+
+ 
+#inst1.correct { display: none;}
+#inst2.correct { display: none;}
+#inst3.correct { display: none;}
+#inst4.correct { display: none;}
+#inst5.correct { display: none;}
+#inst6.correct { display: none;}
+#inst7.correct { display: none;}
+#inst8.correct { display: none;}
+#inst9.correct { display: none;}
+#inst10.correct { display: none;}
+#inst11.correct { display: none;}
+#inst12.correct { display: none;}
+#inst13.correct { display: none;}
+#inst14.correct { display: none;}
+#inst15.correct { display: none;}
+
+
+	div#slot1 /*Trombone*/
+	{
+		left: 710px;
+		top: 200px;
+		height: 70px;
+		width: 70px;
+		margin:auto;
+		position: absolute;
+		background: none; 
+
+	}
+
+	div#slot2
+	{
+		left: 660px;
+		top: 370px;
+		height: 80px;
+		width: 110px;
+		position: absolute;
+		background: none; 
+	}
+	
+	div#slot3
+	{
+		left: 540px;
+		top: 175px;
+		height: 40px;
+		width: 70px;
+		position: absolute;
+		background: none; 
+		
+	}
+	
+		div#slot4
+	{
+		left: 570px;
+		top: 280px;
+		height: 100px;
+		width: 100px;
+		position: absolute;
+		background: none; 
+
+		
+	}
+	
+		div#slot5
+	{
+		left: 760px;
+		top: 260px;
+		height: 50px;
+		width: 50px;
+		position: absolute;
+		background: none; 
+
+		
+	}
+	
+		div#slot6
+	{
+		left: 540px; 
+		top: 220px;
+		height: 50px;
+		width: 50px;
+		position: absolute;
+		background: none; 
+
+		
+	}
+	
+		div#slot7
+	{
+		left: 650px;
+		top: 145px;
+		height: 70px;
+		width: 70px;
+		position: absolute;
+		background: none; 
+
+	}
+	
+		div#slot8
+	{
+		left: 800px;
+		top: 305px;
+		height: 150px;
+		width: 50px;
+		position: absolute;
+		background: none; 
+
+		
+	}
+	
+		div#slot9
+	{
+		left: 450px;
+		top: 223px;
+		height: 40px;
+		width: 60px;
+		position: absolute;
+		background: none; 
+
+	}
+	
+		div#slot10
+	{
+		left: 260px;
+		top: 160px;
+		height: 70px;
+		width: 70px;
+		position: absolute;
+		background: none; 
+
+		
+	}
+	
+		div#slot11
+	{
+		left: 370px;
+		top: 100px;
+		height: 60px;
+		width: 250px;
+		position: absolute;
+		background: none; 
+
+		
+	}
+	
+		div#slot12
+	{
+		left: 220px;
+		top: 225px;
+		height: 50px;
+		width: 50px;
+		position: absolute;
+		background: none; 
+
+		
+	}
+	
+		div#slot13
+	{
+		left: 440px;
+		top: 175px;
+		height: 40px;
+		width: 70px;
+		position: absolute;
+		background: none; 
+
+		
+	}
+	
+		div#slot14
+	{
+		left: 170px;
+		top: 330px;
+		height: 130px;
+		width: 150px;
+		position: absolute;
+		background: none; 
+
+		
+	}
+	
+		div#slot15
+	{
+		left: 370px;
+		top: 270px;
+		height: 100px;
+		width: 100px;
+		position: absolute;
+		background: none; 
+
+		
+	}
+
+ 
+ 
+/* "You did it!" message */
+#successMessage {
+  position: absolute;
+  left: 580px;
+  top: 250px;
+  width: 0;
+  height: 0;
+  z-index: 100;
+  background: #dfd;
+  border: 2px solid #333;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+
+
+
+

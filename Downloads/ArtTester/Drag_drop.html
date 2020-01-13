@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" media="screen and (max-width:600px)"type="text/css" href="max600.css">
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript">
+
+var correctCards = 0;
+$( init );
+
+function init() {
+
+  // Hide the success message
+  $('#successMessage').hide();
+  $('#successMessage').css( {
+    left: '580px',
+    top: '250px',
+    width: 0,
+    height: 0
+  } );
+
+  // Reset the game
+  correctCards = 0;
+  $('#instPile').html( '' );
+  $('#instSlot').html( '' );
+
+  // Create the pile of shuffled cards
+  var numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ];
+  var instrument = ['<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image xlink:href="trombone.svg" height="100" width="100" ></svg>', 
+  '<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image xlink:href="Violoncello.svg" height="100" width="100" ></svg>', 
+  '<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image xlink:href="bassoon.svg" height="100" width="100" ></svg>', 
+  '<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image xlink:href="viola.svg" height="100" width="100" ></svg>', 
+  '<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image xlink:href="tuba.svg" height="100" width="100" ></svg>',  
+  '<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image xlink:href="oboe.svg" height="100" width="100" ></svg>', 
+  '<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image xlink:href="trumpet.svg" height="100" width="100" ></svg>', 
+  '<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image xlink:href="doublebass.svg" height="100" width="100" ></svg>',  
+  '<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image xlink:href="flute.svg" height="100" width="100" ></svg>', 
+  '<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image xlink:href="french_horn.svg" height="100" width="100" ></svg>', 
+  '<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image xlink:href="percussion.svg" height="100" width="100" ></svg>', 
+  '<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image xlink:href="harp.svg" height="100" width="100" ></svg>', 
+  '<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image xlink:href="clarinet.svg" height="100" width="100" ></svg>',
+  '<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image xlink:href="Violin1_2.svg" height="100" width="100" ></svg>',
+  '<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image xlink:href="Violin1_2.svg" height="100" width="100" ></svg>'  ];
+  
+  <!--numbers.sort( function() { return Math.random() - .5 } );-->
+
+  for ( var i=0; i<13; i++ ) {
+    $('<div>' + instrument[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'inst'+numbers[i] ).appendTo( '#instPile' ).draggable( {
+      
+      stack: '#instPile div',
+      cursor: 'move',
+      revert: true
+    } );
+  }
+  
+      $('<div>' + instrument[13] + '</div>').data( 'number1', numbers[13] ).attr( 'id', 'inst'+numbers[13] ).appendTo( '#instPile' ).draggable( {
+      
+      stack: '#instPile div',
+      cursor: 'move',
+      revert: true
+    } );
+	    $('<div>' + instrument[14] + '</div>').data( 'number1', numbers[14] ).attr( 'id', 'inst'+numbers[14] ).appendTo( '#instPile' ).draggable( {
+      
+      stack: '#instPile div',
+      cursor: 'move',
+      revert: true
+    } );
+	
+	
+
+  // Create the card slots
+  var slots = [ /*Slot1*/'<img style= "left: -740px; top: 220px; height: 600px; width: auto;" src="trombone2.png">', 
+  /*Slot2*/'<img style= " left: -690px; top: -130px; height: 600px; width: auto;" src="Cello2.png">', 
+  /*Slot3*/'<img style= " left: -570px; top: 300px; height: 600px; width: auto;" src="bassoon2.png">', 
+  /*Slot4*/'<img style= " left: -600px; top: 30px; height: 600px; width: auto;" src="viola2.png">',
+  /*Slot5*/'<img style= " left: -790px; top: 120px; height: 600px; width: auto;" src="tuba2.png">', 
+  /*Slot6*/'<img style= " left: -570px; top: 200px; height: 600px; width: auto;" src="oboe2.png">', 
+  /*Slot7*/'<img style= " left: -680px; top: 330px; height: 600px; width: auto;" src="trumpet2.png">', 
+  /*Slot8*/'<img style= " left: -830px; top: -70px; height: 600px; width: auto;" src="Doublebass2.png">', 
+  /*Slot9*/'<img style= " left: -480px; top: 205px; height: 600px; width: auto;" src="flute2.png">', 
+  /*Slot10*/'<img style= " left: -290px; top: 300px; height: 600px; width: auto;" src="french_horn2.png">',
+  /*Slot11*/'<img style= " left: -400px; top: 430px; height: 600px; width: auto;" src="percussion2.png">', 
+  /*Slot12*/'<img style= " left: -250px; top: 190px; height: 600px; width: auto;" src="harp_2.png">',
+  /*Slot13*/'<img style= " left: -470px; top: 300px; height: 600px; width: auto;" src="clarinet2.png">',
+  /*Slot14*/'<img style= " left: -200px; top: -100px;height: 600px; width: auto;  " src="violin1_2.png">',
+  /*Slot15*/'<img style= " left: -400px; top: 50px; height: 600px; width: auto;  " src="violin2_2.png">'  ];
+  
+  for ( var i=1; i<=13; i++ ) {
+    $('<div>' + slots[i-1] + '</div>').data( 'number', i ).attr( 'id', 'slot'+ numbers[i-1] ).appendTo( '#instSlots' ).droppable( {
+      accept: '#instPile div',
+      hoverClass: 'hovered',
+      drop: handleCardDrop
+    } );
+  }
+  
+      $('<div>' + slots[13] + '</div>').data( 'number2', 13 ).attr( 'id', 'slot'+ numbers[13] ).appendTo( '#instSlots' ).droppable( {
+      accept: '#instPile div',
+      hoverClass: 'hovered',
+      drop: handleCardDrop
+    } );
+	    $('<div>' + slots[14] + '</div>').data( 'number2', 14 ).attr( 'id', 'slot'+ numbers[14] ).appendTo( '#instSlots' ).droppable( {
+      accept: '#instPile div',
+      hoverClass: 'hovered',
+      drop: handleCardDrop
+    } );
+
+}
+
+function handleCardDrop( event, ui ) {
+  var slotNumber = $(this).data( 'number' );
+  var instNumber = ui.draggable.data( 'number' );
+  var slot1 = $(this).data( 'number2' );
+  var inst1 = ui.draggable.data( 'number1' );
+
+  // If the card was dropped to the correct slot,
+  // change the card colour, position it directly
+  // on top of the slot, and prevent it being dragged
+  // again
+
+  if ( slotNumber == instNumber ) {
+    ui.draggable.addClass( 'correct' );
+    ui.draggable.draggable( 'disable' );
+    $(this).droppable( 'disable' );
+    ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+    ui.draggable.draggable( 'option', 'revert', false );
+    correctCards++;
+  } 
+  
+  // If all the cards have been placed correctly then display a message
+  // and reset the cards for another go
+
+  if ( correctCards == 15 ) {
+    $('#successMessage').show();
+    $('#successMessage').animate( {
+      left: '380px',
+      top: '200px',
+      width: '400px',
+      height: '100px',
+      opacity: 1
+    } );
+  }
+
+}
+
+</script>
+
+</head>
+<body>
+
+<div class="wideBox">
+  <h1>Vie oikea soitin omalle paikalleen</h1>
+
+</div>
+
+<div id="content">
+
+ 
+  <div id="instSlots"> </div>
+   <div id="instPile"> </div>
+
+  <div id="successMessage">
+    <h2>Congratulations!</h2>
+    <!-- <button onclick="init()">Play Again</button> -->
+  </div>
+
+</div>
+
+</body>
+</html>
